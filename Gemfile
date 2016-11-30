@@ -1,13 +1,11 @@
-# frozen_string_literal: true
-source "https://rubygems.org"
-ruby '2.3.0'
+source 'https://rubygems.org'
 
-gem "data_mapper"
-gem "dm-postgres-adapter"
-gem "capybara"
+gem 'sinatra', '1.4.7'
+gem 'data_mapper'
+gem 'dm-postgres-adapter'
+gem 'database_cleaner'
+
 group :test do
-	gem "database_cleaner"
-	gem "rspec"
-	gem "sinatra", "1.4.7"
-	gem "rspec-sinatra"
+  gem 'capybara'
+  gem 'rspec'
 end
