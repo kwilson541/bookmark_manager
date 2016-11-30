@@ -2,7 +2,11 @@ require 'spec_helper'
 
 RSpec.feature 'adding a bookmark', :type => :feature do
 
+	DatabaseCleaner.strategy = :transaction
+	DatabaseCleaner.clean_with(:truncation)
+
 	scenario 'allows user to submit a new link' do
+		DatabaseCleaner.start
 		visit '/links/new'
 		fill_in 'url', :with => 'http://www.reddit.com'
 		fill_in 'title', :with => 'Reddit'
@@ -11,6 +15,9 @@ RSpec.feature 'adding a bookmark', :type => :feature do
 		within 'ul#links' do
 			expect(page).to have_content('Reddit')
 		end
-	end
+
+		DatabaseCleaner.clean
+		
+	end	
 
 end
