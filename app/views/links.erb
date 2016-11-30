@@ -9,10 +9,14 @@
 	    <li>
 	      Title: <%= link.title %>
 	      URL:   <%= link.url %>
-	      Tag: <%= link.tag %>
+	      Tags:  <% link.tags.each do |tag| %><%= tag.name %><% end %>
 	    </li>
 	  <% end %>
 	</ul>
+
+	<form action="/links/new" method="get">
+		<input type="submit" value="Add New Bookmark">
+	</form>
 
 </body>
 </html>
