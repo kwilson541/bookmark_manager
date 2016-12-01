@@ -11,4 +11,9 @@ RSpec.feature 'account sign up', :type => :feature do
 	scenario 'user count increases when user signs up' do
 		expect { sign_up }.to change(User, :count).by(1)
 	end
+
+	scenario 'user password confirmation is incorrect' do
+		expect { invalid_sign_up }.to change(User, :count).by(0)
+
+	end
 end
