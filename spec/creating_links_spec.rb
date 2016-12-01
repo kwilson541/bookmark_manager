@@ -11,7 +11,5 @@ RSpec.feature 'adding a bookmark', :type => :feature do
 		within 'ul#links' do
 			expect(page).to have_content('Reddit')
 		end
-
 	end	
-
 end
