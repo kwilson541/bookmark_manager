@@ -10,8 +10,5 @@ RSpec.feature 'homepage', :type => :feature do
 		within 'ul#links' do
 			expect(page).to have_content('Google')
 		end
-
-
 	end
-
 end

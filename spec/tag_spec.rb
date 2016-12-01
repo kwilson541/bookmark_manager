@@ -12,7 +12,16 @@ RSpec.feature 'adding a new tag', :type => :feature do
 		within 'ul#links' do
 			expect(page).to have_content('Lol')
 		end
-
 	end	
 
+	scenario 'allows user to submit multiple tags per link' do
+		visit '/links/new'
+		fill_in 'url', :with => 'http://www.imgur.com'
+		fill_in 'title', :with => 'Imgur'
+		fill_in 'tags', :with => 'funny, pictures'
+		click_button 'Add Link'
+
+		link = Link.first
+  		expect(link.tags.map(&:name)).to include('funny', 'pictures')
+	end	
 end
